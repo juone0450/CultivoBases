@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CULTIVO de PRINCIPIANTE | Guía de Holo-Cultivo v2.7</title>
+    <title>Cultivo base de principiante</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,7 +79,7 @@
             color: var(--dark-bg);
             box-shadow: 0 0 15px var(--cyan-glow), 0 0 25px var(--cyan-glow);
         }
-        
+
         .content-section {
             display: none;
             animation: fadeIn 0.8s ease-in-out;
@@ -107,6 +107,20 @@
             color: var(--green-glow);
             text-shadow: 0 0 5px var(--green-glow);
         }
+        
+        .cyber-input {
+            background-color: rgba(13, 13, 26, 0.8);
+            border: 1px solid var(--cyan-glow);
+            color: #e0e0e0;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+            clip-path: polygon(0 5px, 5px 0, calc(100% - 5px) 0, 100% 5px, 100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0 calc(100% - 5px));
+        }
+
+        .cyber-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--cyan-glow);
+        }
 
         ::-webkit-scrollbar {
             width: 8px;
@@ -118,6 +132,87 @@
             background: var(--cyan-glow);
             box-shadow: 0 0 10px var(--cyan-glow);
         }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Glitch Footer Styles */
+        .glitch-footer {
+            position: relative;
+            color: #a3a3a3;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .glitch-footer a {
+            color: var(--cyan-glow);
+            text-decoration: underline;
+            transition: all 0.2s ease;
+        }
+
+        .glitch-footer a:hover {
+            color: var(--magenta-glow);
+            text-shadow: 0 0 5px var(--magenta-glow);
+        }
+
+        .glitch-footer::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 2px;
+            top: 0;
+            text-shadow: -1px 0 var(--magenta-glow);
+            width:100%;
+            height:100%;
+            background: var(--dark-bg);
+            overflow: hidden;
+            clip-path: inset(50% 0 50% 0);
+            animation: glitch-anim-1 4s infinite linear alternate-reverse;
+        }
+
+        .glitch-footer::before {
+            content: attr(data-text);
+            position: absolute;
+            left: -2px;
+            top: 0;
+            text-shadow: 1px 0 var(--cyan-glow);
+            width:100%;
+            height:100%;
+            background: var(--dark-bg);
+            overflow: hidden;
+            clip-path: inset(50% 0 50% 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(25% 0 76% 0); }
+            20% { clip-path: inset(92% 0 1% 0); }
+            40% { clip-path: inset(44% 0 45% 0); }
+            60% { clip-path: inset(67% 0 18% 0); }
+            80% { clip-path: inset(36% 0 52% 0); }
+            100% { clip-path: inset(93% 0 5% 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(78% 0 11% 0); }
+            20% { clip-path: inset(15% 0 85% 0); }
+            40% { clip-path: inset(88% 0 3% 0); }
+            60% { clip-path: inset(39% 0 49% 0); }
+            80% { clip-path: inset(79% 0 18% 0); }
+            100% { clip-path: inset(55% 0 24% 0); }
+        }
+
     </style>
 </head>
 <body class="p-4 sm:p-8">
@@ -147,144 +242,112 @@
         <main id="content-display" class="cyber-panel p-6 md:p-8 min-h-[500px]">
             <!-- INTRODUCCIÓN Section -->
             <section id="intro" class="content-section space-y-4">
-                <h2 class="text-3xl cyber-h2">BIENVENIDO, NETRUNNER DEL CULTIVO</h2>
-                <p>Has accedido al núcleo de datos de <span class="text-cyan-400">CULTIVO de PRINCIPIANTE</span>. Aquí, la biotecnología se encuentra con la autonomía. Esta guía no es un simple texto; es un data-stream diseñado para optimizar tu producción, ya sea en un bio-domo de alta tecnología o en un parche de tierra recuperado en los baldíos urbanos.</p>
-                <p>Navega por los módulos usando la consola superior. Cada botón es una clave de acceso a un flujo de información vital. Desde la chispa de la germinación hasta la cristalización de la cosecha, todos los protocolos están aquí. El conocimiento es poder. Es hora de cultivar tu futuro.</p>
-                <p class="text-green-400">// STATUS: CONEXIÓN ESTABLE... MODULOS CARGADOS... LISTO PARA INICIAR PROTOCOLO //</p>
+                <h2 class="text-3xl cyber-h2">BIENVENIDO, CULTIVADOR APRENDIZ</h2>
+                <p>Has accedido a la base de conocimientos de <span class="text-cyan-400">CULTIVO de PRINCIPIANTE</span>. Aquí, la botánica se encuentra con tu dedicación. Esta no es una simple lectura; es una guía interactiva diseñada para optimizar tu producción, ya sea en un armario de cultivo interior o en un parche de tierra en tu patio.</p>
+                <p>Navega por las secciones usando el panel de navegación. Cada botón es un acceso a información vital. Desde la chispa de la germinación hasta la cristalización de la cosecha, todos los pasos están aquí. El conocimiento es poder. Es hora de cultivar tu futuro.</p>
+                <div class="text-right mt-6">
+                    <p class="text-green-400">// ESTADO: GUÍAS CARGADAS... LISTO PARA INICIAR CULTIVO. //</p>
+                    <p class="text-green-500 text-xs mt-2">Si quieres sugerir cambios para tener una mejor guía puedo hacerlo, llena el formulario de abajo</p>
+                </div>
             </section>
 
-            <!-- ETAPAS Section -->
+            <!-- ETAPAS Section and others ... -->
             <section id="etapas" class="content-section space-y-6">
-                <h2 class="text-3xl cyber-h2">CICLO DE VIDA: PROTOCOLOS</h2>
+                <h2 class="text-3xl cyber-h2">CICLO DE VIDA: FASES</h2>
                 <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">1. Germinación (Activación de Datos Biológicos)</h3>
-                    <p>La semilla es un archivo comprimido. La humedad y el calor son la contraseña. El método más seguro es la interfaz de papel húmedo: coloca tus semillas entre dos servilletas de papel húmedas, dentro de dos platos. En 24-72 horas, el código genético se ejecutará y emergerá la radícula.</p>
+                    <h3 class="text-2xl cyber-h3 mb-2">1. Germinación (El Despertar de la Vida)</h3>
+                    <p>La semilla es vida latente. La humedad y el calor son la llave para despertarla. El método más seguro es el del papel húmedo: coloca tus semillas entre dos servilletas de papel húmedas, dentro de dos platos. En 24-72 horas, su potencial genético se activará y emergerá la radícula.</p>
                 </div>
                 <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">2. Vegetativo (Fase de Crecimiento Acelerado)</h3>
-                    <p>Una vez en el sustrato, la planta necesita un fotoperiodo de <span class="text-cyan-400">18 horas de luz / 6 de oscuridad</span>. Durante esta fase, la demanda es alta en Nitrógeno (N) para construir la estructura: tallos y hojas. El objetivo es crear una "planta madre" robusta antes de iniciar la producción.</p>
+                    <h3 class="text-2xl cyber-h3 mb-2">2. Crecimiento Vegetativo</h3>
+                    <p>Una vez en el sustrato, la planta necesita un fotoperiodo de <span class="text-cyan-400">18 horas de luz / 6 de oscuridad</span>. Durante esta fase, la demanda es alta en Nitrógeno (N) para construir la estructura: tallos y hojas. El objetivo es crear una planta robusta y frondosa antes de la floración.</p>
                 </div>
                 <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">3. Floración (Modo Producción)</h3>
+                    <h3 class="text-2xl cyber-h3 mb-2">3. Fase de Floración</h3>
                     <p>Para iniciar la floración en interior, se cambia el fotoperiodo a <span class="text-cyan-400">12 horas de luz / 12 de oscuridad estricta</span>. La planta cambia su enfoque a la producción de flores (cogollos). La demanda de nutrientes vira hacia Fósforo (P) y Potasio (K). Verás los primeros pistilos blancos en 1-2 semanas.</p>
                 </div>
                  <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">4. Cosecha y Curado (Extracción y Refinamiento)</h3>
+                    <h3 class="text-2xl cyber-h3 mb-2">4. Cosecha y Curado (El Refinamiento Final)</h3>
                     <p>El momento óptimo es cuando los tricomas (cristales de resina) están mayormente lechosos con algunos de color ámbar. Se realiza un <span class="text-cyan-400">lavado de raíces</span> las últimas 1-2 semanas (regar solo con agua) para eliminar sales. Se corta, se seca en oscuridad con buena ventilación durante 7-14 días, y luego se cura en frascos de vidrio, abriéndolos diariamente al principio.</p>
                 </div>
             </section>
             
-            <!-- ILUMINACIÓN Section -->
             <section id="iluminacion" class="content-section space-y-4">
                 <h2 class="text-3xl cyber-h2">ARSENAL LUMÍNICO: EL SOL ARTIFICIAL</h2>
                 <p>En un cultivo indoor, la luz es tu sol. La calidad y cantidad determinan el resultado final. No se trata de lúmenes, sino de <span class="text-cyan-400">PAR (Radiación Fotosintéticamente Activa)</span>.</p>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">LED (Diodo Emisor de Luz)</h3>
-                    <p><span class="text-green-400">Ventajas:</span> Eficiencia energética superior, baja emisión de calor, espectro completo y ajustable. La tecnología del futuro, hoy. Ideal para espacios reducidos y para un control total del ambiente.</p>
-                    <p><span class="text-red-400">Desventajas:</span> Costo inicial elevado, aunque se amortiza con el tiempo en la factura eléctrica.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">HPS/HM (Sodio de Alta Presión / Halogenuro Metálico)</h3>
-                    <p><span class="text-green-400">Ventajas:</span> Gran poder de penetración lumínica, ideal para cultivos densos. Costo inicial más bajo.</p>
-                    <p><span class="text-red-400">Desventajas:</span> Generan mucho calor (requiere extracción potente), alto consumo eléctrico, vida útil más corta y espectro de luz no optimizado (demasiado amarillo/naranja).</p>
-                </div>
-                 <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">LEC (Cerámica Emisora de Luz)</h3>
-                    <p>Un híbrido tecnológico. Mejor espectro de luz que el HPS, más parecido al sol. Menos calor y más eficiente que el HPS, pero no tanto como el LED. Una opción balanceada.</p>
-                </div>
             </section>
 
-            <!-- SUSTRATO Section -->
             <section id="sustrato" class="content-section space-y-4">
-                <h2 class="text-3xl cyber-h2">LA MATRIZ: SUSTRATOS Y MEDIOS</h2>
+                <h2 class="text-3xl cyber-h2">EL CIMIENTO: SUSTRATOS Y MEDIOS</h2>
                 <p>El sustrato es el anclaje de la vida, la plataforma desde la cual tu planta se alimenta. La elección depende de tu filosofía de cultivo.</p>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Tierra (Cultivo Orgánico/Bio)</h3>
-                    <p>La opción clásica y más permisiva. Un buen sustrato preparado (light-mix o all-mix) contiene una micro-vida que ayuda a procesar los nutrientes. Es más difícil sobrefertilizar. Busca mezclas con turba, perlita, vermiculita y humus de lombriz.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Fibra de Coco (Hidroponía Sólida)</h3>
-                    <p>Un medio inerte. No contiene nutrientes, por lo que tienes control total sobre lo que la planta come. Requiere fertilización desde el inicio. Ofrece una oxigenación radicular excelente, lo que se traduce en un crecimiento explosivo. Es menos permisivo con errores de pH y EC.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Hidroponía Pura (DWC, NFT)</h3>
-                    <p>El pináculo de la biotecnología. Las raíces están suspendidas directamente en una solución de agua y nutrientes. El crecimiento es el más rápido posible, pero no hay margen de error. Requiere un monitoreo constante de <span class="text-cyan-400">pH y EC</span>. Solo para netrunners experimentados.</p>
-                </div>
             </section>
 
-            <!-- AGUA Section -->
             <section id="agua" class="content-section space-y-4">
-                <h2 class="text-3xl cyber-h2">EL SOLVENTE UNIVERSAL: AGUA</h2>
+                <h2 class="text-3xl cyber-h2">EL SOLVENTE DE LA VIDA: AGUA</h2>
                 <p>El agua es el vehículo de los nutrientes. Su calidad es crítica. Dos parámetros son la clave: <span class="text-cyan-400">pH</span> y <span class="text-cyan-400">EC</span>.</p>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">pH (Potencial de Hidrógeno)</h3>
-                    <p>Define la acidez o alcalinidad del agua. Las raíces solo pueden absorber nutrientes en un rango de pH específico.
-                    <br>- <span class="text-green-400">Tierra:</span> 6.0 - 7.0
-                    <br>- <span class="text-green-400">Coco/Hidro:</span> 5.5 - 6.5
-                    <br>Un pH incorrecto bloqueará la absorción de nutrientes aunque estén presentes en el sustrato (bloqueo de nutrientes).</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">EC (Electroconductividad)</h3>
-                    <p>Mide la cantidad de sales (fertilizantes) disueltas en el agua. Es la "cantidad de comida". Se empieza con una EC baja para plántulas y se aumenta progresivamente hasta el pico de la floración, para luego bajarla durante el lavado de raíces. Controlar la EC previene la sobrefertilización.</p>
-                </div>
-                 <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Calidad del Agua Base</h3>
-                    <p>El agua del grifo suele contener cloro, que es perjudicial. Déjala reposar 24 horas para que se evapore. Si tu agua es muy "dura" (EC alta de base), considera usar un filtro de ósmosis inversa para empezar con una base pura (EC de 0.0).</p>
-                </div>
             </section>
             
-            <!-- ORGÁNICO Section -->
             <section id="organico" class="content-section space-y-4">
-                <h2 class="text-3xl cyber-h2">CÓDIGO NATURAL: CULTIVO ORGÁNICO</h2>
-                <p>El cultivo orgánico no alimenta directamente a la planta, sino a la vida del suelo (bacterias, hongos beneficiosos) que procesa la materia orgánica y la hace disponible para las raíces. Es un sistema simbiótico.</p>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Nutrientes Clave</h3>
-                    <p><span class="text-green-400">Humus de Lombriz:</span> El oro negro. Lleno de nutrientes y microorganismos.</p>
-                    <p><span class="text-green-400">Guano de Murciélago:</span> Potente. Alto en Fósforo para floración.</p>
-                    <p><span class="text-green-400">Harinas (Hueso, Sangre):</span> Aportes de N-P-K de liberación lenta.</p>
-                    <p><span class="text-green-400">Micorrizas y Trichodermas:</span> Hongos beneficiosos que expanden el sistema radicular y lo protegen.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Ventajas</h3>
-                    <p>Sabor y aroma del producto final superior. Es más respetuoso con el medio ambiente y más difícil cometer errores de sobrefertilización. El sistema es más resiliente.</p>
-                </div>
+                <h2 class="text-3xl cyber-h2">LA VÍA NATURAL: CULTIVO ORGÁNICO</h2>
+                <p>El cultivo orgánico no alimenta directamente a la planta, sino a la vida del suelo (bacterias, hongos beneficiosos).</p>
             </section>
             
-            <!-- SALES Section -->
             <section id="sales" class="content-section space-y-4">
-                <h2 class="text-3xl cyber-h2">QUÍMICA DE PRECISIÓN: FERTILIZANTES MINERALES (SALES)</h2>
-                <p>Las sales o fertilizantes minerales son nutrientes quelatados que la planta puede absorber de forma inmediata. Es como inyectar los datos directamente en la matriz, sin intermediarios. Ofrece un control absoluto y resultados explosivos.</p>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Protocolo de Uso</h3>
-                    <p>Se usan bases de nutrientes (A+B) que contienen todos los macros y micros. Se complementan con estimuladores (de raíces, de floración) y aditivos (Calcio/Magnesio, Silicio). Es <span class="text-red-400">IMPERATIVO</span> medir pH y EC en cada riego.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Ventajas y Riesgos</h3>
-                    <p><span class="text-green-400">Ventajas:</span> Control total, absorción rápida, cosechas potencialmente mayores en cantidad.</p>
-                    <p><span class="text-red-400">Riesgos:</span> Fácil sobrefertilizar y "quemar" las plantas. Acumulación de sales en el sustrato que requiere lavados periódicos. Un pequeño error en el pH o EC puede causar problemas graves rápidamente.</p>
-                </div>
+                <h2 class="text-3xl cyber-h2">NUTRICIÓN PRECISA: FERTILIZANTES MINERALES (SALES)</h2>
+                <p>Las sales o fertilizantes minerales son nutrientes quelatados que la planta puede absorber de forma inmediata.</p>
             </section>
             
-            <!-- EXTERIOR Section -->
             <section id="exterior" class="content-section space-y-4">
                 <h2 class="text-3xl cyber-h2">EL MUNDO REAL: CULTIVO DE GUERRILLA Y EXTERIOR</h2>
-                <p>Cultivar bajo el sol real es volver al código fuente. El sol es la mejor luz, y es gratis. Sin embargo, estás a merced de los elementos y las plagas.</p>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Elección del Genotipo</h3>
-                    <p>Elige genéticas resistentes a tu clima. Las Sativas altas y espigadas prefieren climas cálidos y húmedos. Las Índicas compactas y robustas aguantan mejor el frío. Las autoflorecientes son rápidas e ideales para climas con veranos cortos.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Ubicación y Seguridad</h3>
-                    <p>Busca un lugar con un mínimo de <span class="text-cyan-400">6-8 horas de sol directo</span>. La discreción es clave. Usa otras plantas para camuflar tu cultivo. Prepara bien el suelo con compost y humus antes de plantar.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl cyber-h3 mb-2">Defensa del Perímetro</h3>
-                    <p>El exterior está lleno de amenazas. Usa preventivos como el <span class="text-green-400">Aceite de Neem</span> y el <span class="text-green-400">Jabón Potásico</span> para mantener a raya a los insectos. Una barrera física (malla) puede proteger de animales más grandes.</p>
-                </div>
+                <p>Cultivar bajo el sol real es volver a los orígenes. El sol es la mejor luz, y es gratis.</p>
             </section>
             
         </main>
+        
+        <!-- Suggestion Form -->
+        <footer class="mt-8">
+            <div class="cyber-panel p-6 md:p-8">
+                <h2 class="text-3xl cyber-h2 mb-6">Sugerir Cambios</h2>
+                <form id="suggestion-form" class="space-y-6">
+                    <div>
+                        <label for="que-modificar" class="block mb-2 text-cyan-400 tracking-wider">Qué modificar:</label>
+                        <input type="text" id="que-modificar" name="que-modificar" class="w-full cyber-input" placeholder="// Sección, tema, dato específico...">
+                    </div>
+                    <div>
+                        <label for="aporte" class="block mb-2 text-cyan-400 tracking-wider">Aporte:</label>
+                        <textarea id="aporte" name="aporte" rows="4" class="w-full cyber-input" placeholder="// Tu sugerencia o corrección..."></textarea>
+                    </div>
+                    <div class="text-center pt-4">
+                        <button type="submit" class="cyber-button p-3 px-8 text-lg">Enviar Sugerencia</button>
+                    </div>
+                </form>
+                <div id="form-response" class="mt-4 text-center text-green-400 font-bold tracking-widest h-6"></div>
+            </div>
+        </footer>
+
+        <!-- Attribution Footer -->
+        <footer class="mt-12 text-center pb-8">
+            <p class="glitch-footer" data-text="Esta web fue creada con la ayuda de Google IA Gemini PRO con los prompt de Juan Martin Barrientos. © 2025. Se puede ver como se realizo en GitHub.">
+                Esta web fue creada con la ayuda de Google IA Gemini PRO con los prompt de <a href="https://juone0450.github.io/porfolio02/" target="_blank" rel="noopener noreferrer">Juan Martin Barrientos</a>. © 2025. 
+                <br>
+                Se puede ver como se realizo en <a href="https://github.com/juone0450" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            </p>
+        </footer>
     </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal-overlay hidden">
+        <div class="cyber-panel p-6 md:p-8 w-11/12 md:w-1/2 max-w-lg">
+            <h2 class="text-2xl cyber-h2 mb-4">Confirmar Envío</h2>
+            <p class="mb-6">Se enviará el siguiente mensaje por WhatsApp. ¿Deseas continuar?</p>
+            <div id="modal-message" class="cyber-input mb-6 p-4 whitespace-pre-wrap text-sm"></div>
+            <div class="flex justify-around">
+                <button id="confirm-yes" class="cyber-button bg-green-500/20 border-green-400 text-green-300 p-2 px-6">Sí, Enviar</button>
+                <button id="confirm-no" class="cyber-button bg-red-500/20 border-red-400 text-red-300 p-2 px-6">No</button>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -292,30 +355,18 @@
             const contentSections = document.querySelectorAll('.content-section');
             const display = document.getElementById('content-display');
 
-            // Función para cambiar de sección
+            // --- Section Switching Logic ---
             function switchSection(targetId) {
-                // Ocultar todas las secciones
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                // Desactivar todos los botones
-                navButtons.forEach(button => {
-                    button.classList.remove('active');
-                });
+                contentSections.forEach(section => section.classList.remove('active'));
+                navButtons.forEach(button => button.classList.remove('active'));
 
-                // Mostrar la sección objetivo y activar el botón correspondiente
                 const targetSection = document.getElementById(targetId);
                 const activeButton = document.querySelector(`[data-target="${targetId}"]`);
                 
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                }
-                if (activeButton) {
-                    activeButton.classList.add('active');
-                }
+                if (targetSection) targetSection.classList.add('active');
+                if (activeButton) activeButton.classList.add('active');
             }
 
-            // Añadir event listeners a los botones
             navButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetId = button.dataset.target;
@@ -323,8 +374,51 @@
                 });
             });
 
-            // Mostrar la primera sección por defecto al cargar la página
+            // Show the first section by default
             switchSection('intro');
+
+            // --- Suggestion Form & Modal Logic ---
+            const suggestionForm = document.getElementById('suggestion-form');
+            const formResponse = document.getElementById('form-response');
+            const modal = document.getElementById('confirmation-modal');
+            const modalMessage = document.getElementById('modal-message');
+            const confirmYesBtn = document.getElementById('confirm-yes');
+            const confirmNoBtn = document.getElementById('confirm-no');
+            let whatsappUrl = '';
+
+            suggestionForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                formResponse.textContent = ''; // Clear previous messages
+
+                const queModificar = document.getElementById('que-modificar').value;
+                const aporte = document.getElementById('aporte').value;
+
+                if (queModificar.trim() === '' || aporte.trim() === '') {
+                    formResponse.textContent = '// ERROR: Ambos campos son requeridos. //';
+                    setTimeout(() => formResponse.textContent = '', 4000);
+                    return;
+                }
+
+                const phoneNumber = "5491169578193";
+                const message = `Sugerencia para la Guía de Cultivo:\n\n*Quiero modificar:*\n${queModificar}\n\n*Mi aporte es:*\n${aporte}`;
+                
+                modalMessage.textContent = message;
+                whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                
+                modal.classList.remove('hidden');
+            });
+
+            confirmYesBtn.addEventListener('click', function() {
+                window.open(whatsappUrl, '_blank');
+                modal.classList.add('hidden');
+                suggestionForm.reset();
+                formResponse.textContent = '// MENSAJE LISTO PARA ENVIAR. GRACIAS. //';
+                setTimeout(() => formResponse.textContent = '', 5000);
+            });
+            
+            confirmNoBtn.addEventListener('click', function() {
+                modal.classList.add('hidden');
+            });
         });
     </script>
 </body>
